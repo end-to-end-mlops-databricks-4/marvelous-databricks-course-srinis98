@@ -1,0 +1,12 @@
+# This is a Databricks asset bundle definition for marvelous-databricks-course-srinidhi
+# The Databricks extension requires databricks.yml configuration file.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: marvelous-databricks-course-srinidhi
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-f122dc18-1b68.cloud.databricks.com/
