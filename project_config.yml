@@ -1,0 +1,33 @@
+prd:
+  catalog_name: mlops_prd
+  schema_name: srinidhi
+acc:
+  catalog_name: mlops_acc
+  schema_name: srinidhi
+dev:
+  catalog_name: mlops_dev
+  schema_name: srinidhi
+
+experiment_name_basic: /Shared/age-of-abalone-basic
+experiment_name_custom: /Shared/age-of-abalone-custom
+experiment_name_fe: /Shared/age-of-abalone-fe
+
+parameters:
+  learning_rate: 0.01
+  n_estimators: 1000
+  max_depth: 6
+
+
+num_features:
+  - length
+  - diameter
+  - height
+  - whole_weight
+  - shucked_weight
+  - viscera_weight
+  - shell_weight
+
+cat_features:
+  - sex
+
+target: rings
