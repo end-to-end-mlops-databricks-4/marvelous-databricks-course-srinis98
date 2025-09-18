@@ -1,8 +1,5 @@
 """Data preprocessing module."""
 
-import datetime
-
-import numpy as np
 import pandas as pd
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import current_timestamp, to_utc_timestamp
@@ -33,13 +30,13 @@ class DataProcessor:
         num_features = self.config.num_features
         for col in num_features:
             self.df[col] = pd.to_numeric(self.df[col], errors="coerce")
-        
+
         # Convert categorical features to the appropriate type
         cat_features = self.config.cat_features
         for cat_col in cat_features:
             self.df[cat_col] = self.df[cat_col].astype("category")
 
-        #TODO: handle outliers if any
+        # TODO: handle outliers if any
 
         # Extract target and relevant features
         target = self.config.target

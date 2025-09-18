@@ -2,12 +2,11 @@
 
 import pandas as pd
 import pytest
-from tests.conftest import CATALOG_DIR
-
 from pyspark.sql import SparkSession
 
 from term_deposit.config import ProjectConfig
 from term_deposit.data_processor import DataProcessor
+from tests.conftest import CATALOG_DIR
 
 
 def test_data_ingestion(sample_data: pd.DataFrame) -> None:
