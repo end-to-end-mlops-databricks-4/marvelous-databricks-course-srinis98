@@ -8,9 +8,9 @@
 # sys.path.append(str(Path.cwd().parent / 'src'))
 
 # COMMAND ----------
-from loguru import logger
-import yaml
 import pandas as pd
+import yaml
+from loguru import logger
 
 from term_deposit.config import ProjectConfig
 
@@ -21,7 +21,6 @@ logger.info(yaml.dump(config, default_flow_style=False))
 
 # COMMAND ----------
 # Load the house prices dataset
-import pandas as pd
 filepath = "../data/data.csv"
 
 # Load the data

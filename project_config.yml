@@ -1,0 +1,41 @@
+prd:
+  catalog_name: mlops_prd
+  schema_name: term_deposit
+acc:
+  catalog_name: mlops_acc
+  schema_name: term_deposit
+dev:
+  catalog_name: mlops_dev
+  schema_name: term_deposit
+
+experiment_name_basic: /Shared/term-deposit-basic
+experiment_name_custom: /Shared/term-deposit-custom
+experiment_name_fe: /Shared/term-deposit-fe
+
+parameters:
+  learning_rate: 0.01
+  n_estimators: 1000
+  max_depth: 6
+
+
+num_features:
+  - age
+  - balance
+  - day
+  - duration
+  - campaign
+  - pdays
+  - previous
+
+cat_features:
+  - job
+  - marital
+  - education
+  - default
+  - housing
+  - loan
+  - contact
+  - month
+  - poutcome
+
+target: target

@@ -1,1 +1,1 @@
-# Makes tests a Python package
+# Makes tests a Python package.
