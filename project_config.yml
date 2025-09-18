@@ -1,12 +1,12 @@
 prd:
   catalog_name: mlops_prd
-  schema_name: term_deposit
+  schema_name: srinidhi
 acc:
   catalog_name: mlops_acc
-  schema_name: term_deposit
+  schema_name: srinidhi
 dev:
   catalog_name: mlops_dev
-  schema_name: term_deposit
+  schema_name: srinidhi
 
 experiment_name_basic: /Shared/term-deposit-basic
 experiment_name_custom: /Shared/term-deposit-custom
