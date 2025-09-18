@@ -40,7 +40,7 @@ class DataProcessor:
             self.df[cat_col] = self.df[cat_col].astype("category")
 
         #TODO: handle outliers if any
-        
+
         # Extract target and relevant features
         target = self.config.target
         relevant_columns = cat_features + num_features + [target] + ["id"]
