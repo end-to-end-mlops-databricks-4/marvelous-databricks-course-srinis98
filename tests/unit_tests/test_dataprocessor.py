@@ -71,7 +71,7 @@ def test_missing_value_handling(sample_data: pd.DataFrame, config: ProjectConfig
 
     assert processor.df["balance"].isna().sum() == 0
     assert (processor.df["poutcome"] == "None").sum() == 0
-    assert (processor.df["age"] == 0).sum() > 0
+    assert (processor.df["age"] == 0).sum() == 0
 
 
 def test_column_selection(sample_data: pd.DataFrame, config: ProjectConfig, spark_session: SparkSession) -> None:
