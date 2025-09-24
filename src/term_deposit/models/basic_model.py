@@ -12,18 +12,18 @@ catalog_name, schema_name → Database schema names for Databricks tables.
 import mlflow
 import numpy as np
 import pandas as pd
-from lightgbm import LGBMRegressor
+from lightgbm import LGBMClassifier
 from loguru import logger
 from mlflow import MlflowClient
 from mlflow.data.dataset_source import DatasetSource
 from mlflow.models import infer_signature
 from pyspark.sql import SparkSession
 from sklearn.compose import ColumnTransformer
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
-from house_price.config import ProjectConfig, Tags
+from term_deposit.config import ProjectConfig, Tags
 
 
 class BasicModel:
@@ -50,7 +50,7 @@ class BasicModel:
         self.catalog_name = self.config.catalog_name
         self.schema_name = self.config.schema_name
         self.experiment_name = self.config.experiment_name_basic
-        self.model_name = f"{self.catalog_name}.{self.schema_name}.house_prices_model_basic"
+        self.model_name = f"{self.catalog_name}.{self.schema_name}.term_deposit_model_basic"
         self.tags = tags.dict()
 
     def load_data(self) -> None:
@@ -82,7 +82,7 @@ class BasicModel:
         )
 
         self.pipeline = Pipeline(
-            steps=[("preprocessor", self.preprocessor), ("regressor", LGBMRegressor(**self.parameters))]
+            steps=[("preprocessor", self.preprocessor), ("classifier", LGBMClassifier(**self.parameters))]
         )
         logger.info("✅ Preprocessing pipeline defined.")
 
@@ -99,21 +99,21 @@ class BasicModel:
 
             y_pred = self.pipeline.predict(self.X_test)
 
-            # Evaluate metrics
-            mse = mean_squared_error(self.y_test, y_pred)
-            mae = mean_absolute_error(self.y_test, y_pred)
-            r2 = r2_score(self.y_test, y_pred)
+            # Evaluate metrics #TODO: binarize the output
+            precision = precision_score(self.y_test, y_pred)
+            recall = recall_score(self.y_test, y_pred)
+            f1 = f1_score(self.y_test, y_pred)
 
-            logger.info(f"📊 Mean Squared Error: {mse}")
-            logger.info(f"📊 Mean Absolute Error: {mae}")
-            logger.info(f"📊 R2 Score: {r2}")
+            logger.info(f"📊 Precision: {precision}")
+            logger.info(f"📊 Recall: {recall}")
+            logger.info(f"📊 F1 Score: {f1}")
 
             # Log parameters and metrics
             mlflow.log_param("model_type", "LightGBM with preprocessing")
             mlflow.log_params(self.parameters)
-            mlflow.log_metric("mse", mse)
-            mlflow.log_metric("mae", mae)
-            mlflow.log_metric("r2_score", r2)
+            mlflow.log_metric("precision", precision)
+            mlflow.log_metric("recall", recall)
+            mlflow.log_metric("f1_score", f1)
 
             # Log the model
             signature = infer_signature(model_input=self.X_train, model_output=y_pred)
