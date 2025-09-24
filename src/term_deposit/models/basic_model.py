@@ -100,9 +100,9 @@ class BasicModel:
             y_pred = self.pipeline.predict(self.X_test)
 
             # Evaluate metrics #TODO: binarize the output
-            precision = precision_score(self.y_test, y_pred)
-            recall = recall_score(self.y_test, y_pred)
-            f1 = f1_score(self.y_test, y_pred)
+            precision = precision_score(self.y_test, y_pred, pos_label='yes')
+            recall = recall_score(self.y_test, y_pred, pos_label='yes')
+            f1 = f1_score(self.y_test, y_pred, pos_label='yes')
 
             logger.info(f"📊 Precision: {precision}")
             logger.info(f"📊 Recall: {recall}")
