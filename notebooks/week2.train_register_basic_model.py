@@ -1,14 +1,13 @@
 # Databricks notebook source
+import os
+
 import mlflow
+from dotenv import load_dotenv
 from pyspark.sql import SparkSession
 
 from term_deposit.config import ProjectConfig, Tags
 from term_deposit.models.basic_model import BasicModel
-
-from dotenv import load_dotenv
 from term_deposit.utils import is_databricks
-
-import os
 
 # COMMAND ----------
 mlflow.get_tracking_uri()

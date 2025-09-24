@@ -84,7 +84,9 @@ lint.ignore = [
     "ERA001", # commented out code
     "D100", # missing docstring
     "ERA001", # commented out code
-    "D104" # Missing docstring in public package
+    "D104", # Missing docstring in public package
+    "E402", # Module level import not at top of file
+    "D205" # 1 blank line required between summary line and description
 ]
 
 [tool.ruff.format]
