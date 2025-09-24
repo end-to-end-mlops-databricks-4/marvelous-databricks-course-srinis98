@@ -25,7 +25,7 @@ if not is_databricks():
 
 config = ProjectConfig.from_yaml(config_path="../project_config.yml", env="dev")
 spark = SparkSession.builder.getOrCreate()
-tags = Tags(**{"git_sha": "9b3a258e734f795add2ba893666216d86944299f", "branch": "week_2"})
+tags = Tags(**{"git_sha": "a01417a927f931f6a0d30baef2c5ecfb94f61862", "branch": "week_2"})
 # COMMAND ----------
 # Initialize model with the config path
 basic_model = BasicModel(config=config, tags=tags, spark=spark)
