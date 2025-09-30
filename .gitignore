@@ -97,6 +97,4 @@ dmypy.json
 .history
 
 # Sample artifacts
-downloaded_artifacts/
-demo_artifacts/
-
+artifacts_demo/
